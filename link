@@ -1,3 +1,36 @@
 https://docs.google.com/presentation/d/10HivSCRuMWiXWMQ3IBZKgqzPdqHpKLmsDUiJ7jfLCQc/edit#slide=id.g2a66771154_0_9
 
 https://docs.google.com/presentation/d/1bCjq7m3pO8C-7gJcDtYS_zu-TUOWI49aMMhByKQ8POA/edit#slide=id.p17
+
+
+Release 2 : The AppleTree and Apple Classes
+
+Mari kita mulai dengan mendefinisikan class AppleTree dan class Apple. Kedua class tersebut harusnya memiliki ciri-ciri yang 'mirip' dengan class MangoTree, meskipun ada perbedaan di alur kehidupannya.
+
+Dan kedua class baru tadi juga harus mendapatkan method-method yang sama, meskipun beberapa method dapat berbeda: misalnya apel memiliki mature age, dead age, umur mulai berbuah, dll.
+
+Membuat class Apple dan AppleTree seharusnya tidak perlu terlalu lama, kamu bisa meng-copy code dari class Mango dan MangoTree sebagai template. Jika kesulitan, coba cari bantuan dan bertanyalah!
+
+Release 2 : The FruitTree and Fruit Classes
+
+Sekarang kita punya dua jenis pohon yang masing-masing punya buahnya sendiri-sendiri. Kedua jenis class ini memiliki code yang mirip. Ada di beberapa bagian bahkan sama persis. Salah satu cara untuk menghindari pengulangan code seperti ini adalah dengan melakukan abstraksi bagian yang sama menjadi kelas induk. Kita bisa namakan class ini sebagai FruitTree sehingga misalnya kita punya class MangoTree bisa terlihat seperti berikut:
+
+"use strict"
+class MangoTree extends FruitTree {
+  // code goes here
+}
+class AppleTree extends FruitTree {
+  // code goes here
+}
+Pikirkan dengan matang parameter-parameter yang membedakan antara pohon mangga dengan pohon apel. Beberapa hal berikut bisa dimasukkan ke dalam parameter:
+
+Berapa tinggi pohon bertambah setiap tahun
+Umur berhenti bertambah tinggi
+Umur mulai berbuah
+Umur pohon mati
+Jenis buah apa yang dihasilkan tiap-tiap pohon
+Parameter tersebut dibutuhkan untuk membedakan satu pohon dengan pohon yang lain.
+
+The PearTree and Pear Classes
+
+Kita sudah memiliki class FruitTree dan Fruit, sekarang saatnya membuat class baru PearTree yang menghasilkan buah Pear.
