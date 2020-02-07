@@ -1,0 +1,155 @@
+Summary
+
+Didalam pemrograman berorientasi object, Composition adalah salah satu cara untuk menggabungkan class yang sederhana menjadi kompleks.
+
+Class dan object dapat dibagi menjadi dua: composite dan non-composite. Composition dapat disebut sebagai hubungan antar tipe: sebuah class dengan tipe composite (misalnya mobil) "memiliki" object dengan tipe yang lebih sederhana (contohnya roda).
+
+Ketika memodelkan sebuah sistem kita seringkali butuh memilih antara inheritance atau composition dan banyak sistem dapat dimodelkan dengan kedua teknik tadi. Untuk mengerti kapan harus menggunakan composition atau inheritance, kamu perlu berlatih dengan composition. Mari eksplor lebih lanjut dengan menggunakan model Cookie.
+
+Releases
+
+Release 0 : Cookies with Inheritance and Factories.
+
+Mulai dengan membuat model inheritance seperti di bawah:
+
+"use strict"
+class Cookie {
+  constructor() {
+    this.status = "mentah"
+  }
+  bake() {
+    this.status = "selesai dimasak"
+  }
+}
+class PeanutButter extends Cookie {
+  constructor() {
+    this.peanut_count = 100
+  }
+}
+class ChocholateChip extends Cookie {
+  constructor() {
+    this.choc_chip_count = 200
+  }
+}
+Sebagai pemilik toko kue, saya memiliki list kue yang akan di produksi setiap harinya dalam sebuah file text. Buatlah file teks cookies seperti di bawah ini:
+
+peanut butter
+chocolate chip
+chocolate cheese
+chocolate butter
+Kita bisa membuat dengan driver code atau kita bisa gunakan design pattern yang disebut Factory.
+
+Dapatkan list kue dari cookies.txtmenggunakan nodeJs file system yang synchronous, kemudian simpan dalam variabel bernama options
+
+Sekarang kita gunakan Cookie Factory dengan isi parameter nya options di atas. Buat code di dalam method create, untuk membentuk beberapa object cookies sesuai dengan cookies.txt
+
+Contoh driver code nya :
+
+class CookieFactory {
+  static create(cookies){
+    // accepts a list of cookie types and returns those cookies
+  }
+  // define other methods as needed
+}
+// contoh driver code
+// sesuaikan dengan model inheritance
+// baca daftar kue dari file dan kirim ke cookie Factory
+// di mana lokasi file yang kamu tulis supaya code bisa berjalan?
+let batch_of_cookies = CookieFactory.create(options);
+console.log(batch_of_cookies);
+Contoh result nya :
+
+[ PeanutButter {
+    name: 'peanut butter',
+    status: 'mentah',
+    ingredients: [],
+    peanut_count: 100 },
+  ChocholateChip {
+    name: 'chocolate chip',
+    status: 'mentah',
+    ingredients: [],
+    choc_chip_count: 200 },
+  OtherCookie {
+    name: 'chocolate cheese',
+    status: 'mentah',
+    ingredients: [],
+    other_count: 150 },
+  OtherCookie {
+    name: 'chocolate butter',
+    status: 'mentah',
+    ingredients: [],
+    other_count: 150 } ]
+Release 1 : Add Requirements to the Inheritance Model
+
+Test code yang baik adalah bagaimana kita merespon perubahan requirement. Beberapa ukurannya:
+
+Apakah kita perlu membuat perubahan yang banyak untuk perubahan requirement yang sedikit?
+Memungkinkan atau tidak mengimplementasikan requirement ke dalam code?
+Apakah dengan merubah code kita akan berefek kepada code lain yang memiliki ketergantungan kepada code block tadi?
+Yuk kita test model Inherited Cookie kita tadi dengan menambahkan requirement berikut:
+
+Saya bisa memonitor apa saja bahan untuk membuat kue
+Di hari selasa saya ingin hidup tanpa sugar. Bisa beritahu saya kue mana yang bisa saya makan?
+Modifikasi class yang dibuat sehingga dapat memenuhi requirement di atas. Gimana code kita merespon perubahan requirement tadi? Apakah dengan menambahkan suatu property / menambah class baru / cara lainnya ?
+
+Buat sebuah class baru bernama Ingredient yang dapat menyimpan informasi tentang resep yang mencakup nama bahan dan jumlahnya.
+
+Kemudian, refaktor class Cookie sehingga dapat mengakomodasi class Ingredient dengan cara mengirimkan list bahan ke dalam class Cookie.
+
+Supaya dapat berjalan, kita juga perlu update modul Factory sehingga dapat membuat kue beserta bahannya. Langkah terakhir, kita perlu membuat file text baru yang mengandung tipe kue diikuti dengan daftar bahan. Setiap kue harus memiliki paling tidak tiga bahan utama. Kalian bebas menentukan bagaimana bentuk datanya, tapi kalau butuh contoh, bisa dibuat seperti berikut:
+
+peanut butter = 1 cup : flour, 2 cups (gluten) : sugar, 2 cups : peanut butter, 1 cup : cinnamon, 2 tsp : butter
+chocolate chip = 1 cup : chips, 1 cup : sugar, 2 tsp : butter
+chocolate cheese = 1 cup : flour, 2 cups : sugar, 2 cups : cinnamon, 1 tblsp : butter
+chocolate butter = 1 cup : gluten free flour, 1 cup : flavor adders, 2 tsp : butter
+Gunakan code di bawah sebagai petunjuk, pertama buatlah class Ingredient dan refactor class Cookie dan Factory supaya aplikasi tetap berjalan sebagaimana mestinya.
+
+NOTE: Code di bawah ini hanya petunjuk, class Cookie kamu mungkin mengandung class dan method lainnya.
+
+"use strict"
+class Ingredient {
+  constructor(options) {
+    this.name = options['name']
+    this.amount = options['amount']
+  }
+  //your method here if needed
+}
+class Cookie {
+  constructor(ingredients) {
+    this.ingredients = ingredients
+    this.has_sugar = null
+  }
+  //your method here if needed
+}
+class CookieFactory {
+  static create(cookies) {
+    // accepts an list of cookies and
+    // creates those cookies by sending an array of Ingredient to Cookie.new
+  }
+  // define other methods as needed
+}
+var batch_of_cookies = CookieFactory.create(options)
+console.log(batch_of_cookies)
+let sugarFreeFoods = CookieFactory.cookieRecommendation("tuesday", batch_of_cookies);
+console.log("sugar free cakes are :");
+for(let i = 0; i < sugarFreeFoods.length; i++){
+  console.log(sugarFreeFoods[i].name);
+}
+Mari kita lihat bagaimana model dalam merespon perubahan requirement, Coba tambahkan requirement ke dalam model.
+
+Buatlah dua tipe kue baru dengan nama ChocolateChipCrumbled dan PeanutButterCrumbled yang merupakan kue biasa dalam bentuk crumbled.
+Coba buat method yang bahannya berbeda dari tipe kue lainnya. Bagaimana cara kita menggunakan composition untuk membuat hal demikian.
+Optimize Your Learning
+
+When to use Inheritance vs Composition?
+
+Pertanyaan mengenai "inheritance versus composition" datang dari permasalahan dalam menulis ulang code kita. Tujuan utamanya di sini bukanla menduplikasi code yang sudah kita tulis, tapi lebih kepada menciptaka sebuah code yang jelas, efisien dan mudah dipahami. Inheritanc menyelesaikan masalah ini dengan membuat model yang memasukkan berbaga fitur di dalam class. Composition menyelesaikan masalah yang sama dengan modul dan kemampuan untuk memanggil fungsi dari class yang lain.
+
+Jika kedua solusi menyelesaikan permasalahan code reusability, lantas kenapa kita harus memilih salah satu? Jawaban berikut ini memang agak subjektif, tap berikut adalah petunjuknya:
+
+Gunakan composition untuk mempaket code ke dalam modul-modul yang digunakan oleh bagian lainnya. Jika kamu tidak yakin memilih yang mana, pilihlah composition.
+Gunakan inheritance hanya jika code kita digunakan berulang kali dengan cara yang mirip sekali, konsep yang sama atau karena kamu sudah menggunakannya.
+Resources
+
+Composition
+Factory
