@@ -1,0 +1,27 @@
+Sudoku 1 - Modeling Logic
+
+Learning Competencies
+
+Memodelkan aturan-aturan nyata di JavaScript
+Summary
+
+Di akhir dari dua tantangan ke depan kita akan membuat Sudoku solver yang sudah memiliki fungsi yang lengkap yang dapat dijalankan dari command line.
+
+Sudoku adalah permainan puzzle angka yang mengandalkan logika. Tujuan akhir dari game ini adalah mengisi papan 9x9 dengan angka di setiap kolom, baris dan sembilan buah papan kecil 3x3 yang membentuk sebuah papan besar yang akan berisi angka dari 1 hingga 9.
+
+Sebelum:
+
+Unsolved
+
+Sesudah:
+
+Solved Sudoku
+
+Reminder! Yang menantang dari permainan ini adalah, setiap memasukan angka baru kedalam 1 ‘cell’, Pastikan angka itu adalah angka yang uniqe dari sisi: 1. Baris 2. Kolom 3. Group (kotak kecik 3x3)
+
+Detail
+
+Resources
+
+SolveMySudoku.com
+Sudoku Solitions
