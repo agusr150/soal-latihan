@@ -1,0 +1,10 @@
+Check All Vowels
+
+Learning Competencies
+
+Melakukan problem solving di JavaScript
+Releases
+
+Release 0: Check Vowel
+
+Buat sebuah function yang mengecek apakah suatu string terdiri dari huruf vokal semua atau tidak tanpa menggunakan regular expression (RegEx). return true bila ditemukan dan false bila tidak.
