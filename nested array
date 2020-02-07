@@ -1,0 +1,49 @@
+Create a Nested Array
+
+Learning Competencies
+
+Mengerti cara membuat nested array
+Summary
+
+Contoh sebuah nested array adalah sebagai berikut:
+
+# Nested array 4 x 4
+[
+  [ 1, 2, 3, 4 ],
+  [ 5, 6, 7, 8 ],
+  [ 9, 10, 11, 12 ],
+  [ 13, 14, 15, 16 ]
+]
+# Nested array 4 x 2
+[
+  [ 1, 2 ],
+  [ 3, 4 ],
+  [ 5, 6 ],
+  [ 7, 8 ]
+]
+Releases
+
+Release 0
+
+Buat fungsi yang menerima 2 input yaitu angka(jumlahRow, jumlahCol) untuk membentuk array 2 dimensi dengan ukuran sesuai dengan jumlahRow dan jumlahCol yang di input, dan isinya merupakan random alphabet.
+
+function createNestedArr(jumlahRow, jumlahCol) {
+  // YOUR CODE HERE...
+}
+console.log(createNestedArr(5,3))
+/*
+output:
+[ [ 'p', 's', 'w' ],
+  [ 'r', 'a', 'i' ],
+  [ 'q', 'x', 'c' ],
+  [ 'r', 'q', 'w' ],
+  [ 'm', 'o', 'y' ] ]
+*/
+console.log(createNestedArr(4,2))
+/*
+output:
+[ [ 'b', 'r' ],
+  [ 'h', 'u' ],
+  [ 'c', 'v' ],
+  [ 'i', 'i' ] ]
+*/
