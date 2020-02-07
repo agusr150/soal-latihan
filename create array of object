@@ -1,0 +1,39 @@
+String to Array
+
+Learning Competencies
+
+Menggabungkan method javascript dengan looping dan array
+Releases
+
+Release 0
+
+Buat fungsi yang menerima sebuah string, kemudian mengubahnya menjadi dalam bentuk nested array. Lihat contoh di bawah ini :
+
+Input:
+
+"aqrst,ukaei,ffooo"
+
+Output:
+
+[ [ 'a', 'q', 'r', 's', 't' ],
+  [ 'u', 'k', 'a', 'e', 'i' ],
+  [ 'f', 'f', 'o', 'o', 'o' ] ]
+Input:
+
+"qwer,tyui,asdf,ghjk"
+
+Output:
+
+[ [ 'q', 'w', 'e', 'r' ],
+  [ 't', 'y', 'u', 'i' ],
+  [ 'a', 's', 'd', 'f' ],
+  [ 'g', 'h', 'j', 'k' ] ]
+Contoh output yang SALAH :
+
+[ 'aqrst',
+  'ukaei',
+  'ffooo' ]
+[ 'qwer',
+  'tyui',
+  'asdf',
+  'ghjk' ]
