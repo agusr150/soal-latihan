@@ -1,0 +1,48 @@
+Roman Numerals
+
+Tujuan Pembelajaran
+
+Mengimplementasikan JavaScript untuk memecahkan masalah.
+Menggunakan function untuk membuat code yang modular.
+Membuat satu function atau method hanya mengerjakan satu jenis pekerjaan. Buat method yang simpel, kecil dan ringkas.
+Menggunakan nama variable atau method yang memiliki arti dan mudah dibaca.
+Deskripsi Tantangan
+
+Kita akan membuat sebuah aplikasi yang dapat melakukan konversi dari integer menjadi angkaa romawi. Contohnya: 476 menjadi 'CDLXXVI'.
+
+Sebagai referensi berikut adalah tabel konversi dari angka romawi menjadi angka latin atau integer:
+
+Roman Numeral	Arabic Numeral
+I	1
+V	5
+X	10
+L	50
+C	100
+D	500
+M	1000
+Aplikasi yang akan kita buat hanya perlu meng-handle angka yang tidak lebih besar dari 3000. Oleh karena itu, kita hanya perlu membuat aplikasi yang dapat mengonversi angka 1-3000 saja. Tentunya kamu tidak dibatasi bila kamu ingin membuat aplikasimu dapat mengonversi angka yang lebih besar. Tapi jangan lupa kalau masih ada challenge lain yang harus dikerjakan hari ini. :+1:
+
+Releases
+
+Release 0 : Roman Numerals
+
+Tulis sebuah method dengan nama toRoman yang akan menerima angka integer diantara 1 sampai dengan 3000 dan return string angka romawi tadi.
+
+Pastikan kamu test method yang kamu buat dengan mencoba memasukkan input yang bisa kamu tebak hasilnya. Test dengan angka yang mudah seperti toRoman(1) hingga angka yang kompleks seperti toRoman(1646).
+
+console.log('My totally sweet testing script\n')
+console.log('input | expected | actual')
+console.log('——————|——————————|————————')
+console.log('4    | IV      | ', toRoman(4))
+console.log('9    | IX      | ', toRoman(9))
+console.log('23   | XXIII   | ', toRoman(23))
+console.log('1453 | MCDLIII | ', toRoman(1453))
+console.log('1646 | MDCXLVI | ', toRoman(1646))
+Hasil
+
+Latin	Roman
+4	IV
+9	IX
+23	XXIII
+1453	MCDLIII
+1646	MDCXLVI
