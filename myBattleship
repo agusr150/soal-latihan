@@ -1,0 +1,173 @@
+// Your code here
+"use strict"
+const input = process.argv
+
+if (input.length<3){
+    console.log('Please read information below to start the Game \n');
+
+
+// create table
+
+    console.log('     A   B   C   D   E   F   G   H   I   J')
+    console.log('   +---------------------------------------+')
+    console.log(' 1 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 2 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 3 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 4 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 5 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 6 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 7 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 8 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log(' 9 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   |---|---|---|---|---|---|---|---|---|---|')
+    console.log('10 |   |   |   |   |   |   |   |   |   |   |')
+    console.log('   +---------------------------------------+')
+    console.log('\n \n  There is a board 10 x 10 as above which will be filled by 5 ships:');
+    console.log('  1 x 5 blocks , 1 x 4 blocks, 1 x 3 blocks, 1 x 2 blocks.\n \n ');
+    console.log(' These ships will have random orientation and location. You need to guess by typing:')
+    console.log('   \n node<space>index.js<space>attack1<space>attack2...');
+    console.log('   \n example : node index.js A3 B2 D4 \n\n');
+
+} else {
+
+//prepare board
+let x = 10;
+let y = 10;
+let pos = [];
+for (let i=0; i<10; i++){
+    let pos1=[];
+    for (let j=0; j<10; j++){
+        pos1.push(".");
+    }
+    pos[i]=pos1;
+}
+
+
+//create random ship's position
+function randomHorVer(){
+    let orientation = Math.floor(Math.random()*2)
+return orientation
+}
+
+// fill position
+function fillPosition(xStart, yStart, n){
+    let orient = randomHorVer();
+    if(orient === 0){
+        let fill = true;
+        for (let i=0; i<n; i++){
+            if (pos[i][yStart]==='o'){
+                fill = false
+                return -1 // make sure no overlapping among ships
+            }
+        }
+        if (fill === true){
+            for (let i=0; i<n; i++){
+                pos[i][yStart]='o';   
+            }
+        }
+    } else {
+        let fill = true;
+        for (let j=0; j<n; j++){
+            if (pos[xStart][j]==='o'){
+                fill = false
+                return -1
+            }
+        }
+        if (fill === true){
+            for (let i=0; i<n; i++){
+                pos[xStart][i]='o';   
+            }
+        }
+    }
+    return pos     
+}
+
+//ship 5 blocks
+let x5Start = Math.floor(Math.random()*6);
+let y5Start = Math.floor(Math.random()*6);
+fillPosition(x5Start, y5Start,5);
+
+//ship 4 blocks
+for (let a = 1; a>0; a++){
+    let  lanjut = '';
+    let x4Start = Math.floor(Math.random()*6);
+    let y4Start = Math.floor(Math.random()*6);
+    lanjut = fillPosition(x4Start, y4Start,4);
+    if (lanjut !== -1){
+        break
+    }
+}
+
+//ship 3 blocks
+for (let a = 1; a>0; a++){
+    let lanjut ='';
+    let x3Start = Math.floor(Math.random()*6);
+    let y3Start = Math.floor(Math.random()*6)
+    lanjut =fillPosition(x3Start, y3Start,3);
+    if (lanjut !== -1){
+        break
+    }
+}
+
+//ship 2 blocks
+for (let a = 1; a>0; a++){
+    let lanjut = '';
+    let x2Start = Math.floor(Math.random()*6);
+    let y2Start = Math.floor(Math.random()*6)
+    lanjut =fillPosition(x2Start, y2Start,2);
+    if (lanjut !== -1){
+        break
+    }
+}
+
+// attack
+const kamus = 'abcdefghijklmnopqrstuvwxyz';
+let attackX ='';
+let attackY ='';
+let count = 0;
+let countOut = 0;
+console.log(pos[2][1])
+for (let i =2; i<input.length; i++){ //read from input [2] of argv
+    let attackX1=input[i][0].toLowerCase();
+    for (let j=0; j<kamus.length; j++){
+        if(attackX1===kamus[j]){
+            attackY = j;
+        }
+    }
+    let inputNum = input[i].slice(1,input[i].length);
+    attackX= inputNum-1;
+    if (attackX>9 || attackY>9){
+        countOut ++
+    } else if (pos[attackX][attackY]==='o'){
+        pos[attackX][attackY]='X'
+        count ++
+    } else {
+        pos[attackX][attackY]='!'
+    }
+}
+
+//showing in required table
+
+console.log('     A   B   C   D   E   F   G   H   I   J');
+console.log('   +---------------------------------------+');
+for (let i=0; i<10; i++){
+    if (i === 9){
+        console.log(`${i+1} | ${pos[i][0]} | ${pos[i][1]} | ${pos[i][2]} | ${pos[i][3]} | ${pos[i][4]} | ${pos[i][5]} | ${pos[i][6]} | ${pos[i][7]} | ${pos[i][8]} | ${pos[i][9]} |`);        
+        console.log('   +---------------------------------------+');    
+    } else {
+        console.log(` ${i+1} | ${pos[i][0]} | ${pos[i][1]} | ${pos[i][2]} | ${pos[i][3]} | ${pos[i][4]} | ${pos[i][5]} | ${pos[i][6]} | ${pos[i][7]} | ${pos[i][8]} | ${pos[i][9]} |`);
+        console.log('   |---|---|---|---|---|---|---|---|---|---|');    
+    }
+}
+
+
+console.log('From '+(input.length-2)+' attacks , you hit '+count+" and "+countOut+" outside the board")
+}
